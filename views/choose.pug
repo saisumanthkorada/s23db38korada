@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+
+  - var image_names = ['nike.jpg', 'puma.jpg', 'kohli.jpg', 'sketchers.jpg', 'reebok.jpg']
+
+  - for(let i = 0; i<3; i++)
+    - let index = Math.floor(Math.random()*5)
+    - let images = image_names[index]
+    img(src=`/images/${images}`, alt=`${images}`, height="300", width="300")
+
