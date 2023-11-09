@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-   - let results = [{Brand: "Nike", Ambassador : "Jordan", price: '$125'},{Brand: "Puma", Ambassador: "Kohli", price: '$135'},{Brand: "Jimmy choo", Ambassador: "Sumanth", price:'$699'}];
+   - let result = results
 
   script.
     function buy(index){
@@ -11,7 +11,7 @@ block content
 
   div.container-fluid
     div.row
-        each shoe, index in results
+        each shoe, index in result
             div.col-sm-2(onClick = `buy(${index})`)
                 p Brand :  #{shoe.Brand}
                 p Ambassador : #{shoe.Ambassador}
