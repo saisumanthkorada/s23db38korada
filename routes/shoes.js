@@ -4,3 +4,5 @@ var router = express.Router();
 /* GET mobile */
 router.get('/', shoe_controllers.shoe_view_all_Page );
 module.exports = router;
+
+router.get('/shoes/:id', shoe_controllers.shoe_detail);
