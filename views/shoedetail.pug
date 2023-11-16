@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to see
+  else
+    - let shoeid = toShow._id 
+    - let shoe_brand = toShow.Brand
+    - let shoeAmbassador = toShow.Ambassador
+    - let shoeprice = toShow.price
+    div
+      div.row
+        div(class='shoeAttr mr-3') Shoe ID is:
+        div #{shoeid}
+      div.row
+        div(class='shoeAttr mr-3') Shoe Brand is:
+        div #{shoe_brand}
+      div.row
+        div(class='shoeAttr mr-3') Shoe Ambassador is:
+        div #{shoeAmbassador}
+      div.row
+        div(class='shoeAttr mr-3') Shoe Price is:
+        div #{shoeprice}

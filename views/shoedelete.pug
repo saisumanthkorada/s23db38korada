@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let shoeid = toShow._id
+    - let shoe_Brand = toShow.Brand
+    - let shoe_Ambassador = toShow.Ambassador
+    - let shoe_price = toShow.price
+    - let actionid = "/resource/shoes/" + shoeid
+
+    script.
+      let actionid = "#{actionid}"
+
+    div.container.mt-5
+      div.row
+        div.col-md-6
+          div.card
+            div.card-body
+              h5.card-title Costume Details
+              div.row
+                div.col-sm-4 Costume ID:
+                div.col-sm-8 #{shoeid}
+              div.row
+                div.col-sm-4 Costume Type:
+                div.col-sm-8 #{shoe_Brand}
+              div.row
+                div.col-sm-4 Costume Size:
+                div.col-sm-8 #{shoe_Ambassador}
+              div.row
+                div.col-sm-4 Costume Cost:
+                div.col-sm-8 #{shoe_price}
+
+              div.row.mt-3
+                div.col-sm-6
+                  button.btn.btn-danger.btn-block(onclick="deleteOnid()") Delete
+                div.col-sm-6
+                  button.btn.btn-secondary.btn-block(onclick="cancel()") Cancel
+
+    script.
+      function cancel() {
+        // Go back to the home page for the costume collection
+        window.location.href='/shoes'
+      }
+
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/shoes'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error )
+        });
+      }
