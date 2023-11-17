@@ -10,11 +10,17 @@ block content
     }
 
   div.container-fluid
-    div.row
+    div.row.m-1
         each shoe, index in result
-            div.col-sm-2(onClick = `buy(${index})`)
+            div.col-sm-2.m-1(onClick = `buy(${index})`)
+            - let destination = `/shoes/update?id=${shoe._id}`
                 p Brand :  #{shoe.Brand}
                 p Ambassador : #{shoe.Ambassador}
                 p Price: #{shoe.price}
+                button.btn(class="btn-primary ml-1",onclick=`dispatch('${destination}')`) Update
 
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }
 
